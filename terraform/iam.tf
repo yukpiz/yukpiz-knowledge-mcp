@@ -58,8 +58,8 @@ resource "aws_iam_role_policy" "bedrock_kb_vectors" {
           "s3vectors:ListVectors"
         ]
         Resource = [
-          "arn:aws:s3vectors:${var.aws_region}:*:vector-bucket/${aws_s3_vector_bucket.this.bucket}",
-          "arn:aws:s3vectors:${var.aws_region}:*:vector-bucket/${aws_s3_vector_bucket.this.bucket}/index/*"
+          aws_s3vectors_vector_bucket.this.arn,
+          "${aws_s3vectors_vector_bucket.this.arn}/index/*"
         ]
       }
     ]

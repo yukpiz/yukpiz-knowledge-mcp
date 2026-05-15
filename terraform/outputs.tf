@@ -10,5 +10,5 @@ output "datasource_bucket_name" {
 
 output "vector_bucket_name" {
   description = "S3 vector bucket name"
-  value       = aws_s3_vector_bucket.this.bucket
+  value       = aws_s3vectors_vector_bucket.this.vector_bucket_name
 }

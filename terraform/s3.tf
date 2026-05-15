@@ -31,13 +31,13 @@ resource "aws_s3_bucket_public_access_block" "datasource" {
 }
 
 # ベクトルストア用S3 Vectorsバケット
-resource "aws_s3_vector_bucket" "this" {
-  bucket = "${var.project_name}-vectors"
+resource "aws_s3vectors_vector_bucket" "this" {
+  vector_bucket_name = "${var.project_name}-vectors"
 }
 
-resource "aws_s3_vector_bucket_index" "this" {
-  vector_bucket = aws_s3_vector_bucket.this.bucket
-  index_name    = "knowledge-index"
+resource "aws_s3vectors_index" "this" {
+  vector_bucket_name = aws_s3vectors_vector_bucket.this.vector_bucket_name
+  index_name         = "knowledge-index"
 
   embedding_configuration {
     dimensions = var.embedding_dimensions

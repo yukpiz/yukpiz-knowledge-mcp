@@ -18,10 +18,10 @@ resource "aws_bedrockagent_knowledge_base" "this" {
   }
 
   storage_configuration {
-    type = "S3_VECTOR"
+    type = "S3_VECTORS"
 
-    s3_vector_configuration {
-      bucket_arn = "arn:aws:s3vectors:${var.aws_region}:*:vector-bucket/${aws_s3_vector_bucket.this.bucket}"
+    s3_vectors_configuration {
+      index_arn = aws_s3vectors_index.this.arn
     }
   }
 }
