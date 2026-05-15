@@ -38,11 +38,7 @@ resource "aws_s3vectors_vector_bucket" "this" {
 resource "aws_s3vectors_index" "this" {
   vector_bucket_name = aws_s3vectors_vector_bucket.this.vector_bucket_name
   index_name         = "knowledge-index"
-
-  embedding_configuration {
-    dimensions = var.embedding_dimensions
-    data_type  = "float32"
-  }
-
-  distance_metric = "cosine"
+  dimension          = var.embedding_dimensions
+  data_type          = "float32"
+  distance_metric    = "cosine"
 }
